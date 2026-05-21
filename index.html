@@ -4,57 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>student profile</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=poppins&display=swap"
+    rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>Gayatri jadhav</h1>
+        <nav class="navbar">
+        <h1 class="logo">Gayatri Jadhav</h1>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+        </nav>
     </header>
     <main>
         <section>
             <h2>About me</h2>
             <p>
                 Hello sir, I am a computer science student and aspiring fullstack developer.
-                I am a begineer web develpoer learning html, css, and javascript. I enjoy building small projects and learning new tech.
+                I am a beginner web developer learning html, css, and javascript. 
+                I enjoy building small projects and learning new tech.
             </p>
         </section>
-        <article>
-            <h2>My hobbies</h2>
+        <article> 
+            <h2>My Hobbies</h2>
             <ul>
                 <li>Coding</li>
-                <li>Reading books</li>
-                <li>music</li>
-            </ul>
+                <li>Reading Books</li>
+                <li>Music</li>
+        </ul>
+   
         </article>
+    
+        
         <section>
-            <h2>My photo</h2>
+            <h2>My Photo</h2>
             <img
-            src="WhatsApp Image 2026-05-18 at 4.18.54 PM.jpeg"width="100"
+            src="WhatsApp Image 2026-05-18 at 4.18.54 PM.jpeg"width="100" height="100"
             alt="Student image">
         </section>
         <section>
-            <h2>Acadmeic marks</h2>
-            <table border="1">
+            <h2>Academic Marks</h2>
+            <table>
                 <tr>
                     <th>Subject</th>
                     <th>Marks</th>
 
                 </tr>
                 <tr>
-                    <td>html</td>
+                    <td>Html</td>
                     <td>90</td>
                 </tr>
                 <tr>
-                    <td>css</td>
+                    <td>Css</td>
                     <td>88</td>
                 </tr>
                 <tr>
-                    <td>javascript</td>
+                    <td>Javascript</td>
                     <td>93</td>
                 </tr>
             </table>
         </section>
         <section>
-            <h2>Contact me</h2>
+            <h2>Contact Me</h2>
             <form>
                 <label>Email:</label>
                 <input type="email"><br><br>
@@ -63,9 +77,26 @@
                 <button type="submit">Submit</button>
             </form>
         </section>
+        <section>
+            <h2>My Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>💻Html</h3>
+                    <p>Structure of webpages</p>
+                </div>
+                <div class="skill-card">
+                    <h3>🎨Css</h3>
+                    <p>Design and styling</p>
+                </div>
+                <div class="skill-card">
+                    <h3>⚡Javascript</h3>
+                    <p>Interactive webpages</p>
+                </div>
+            </div>
+        </section>
     </main>
     <footer>
-        <p>@2026 student profile page</p>
+        <p>&copy;2026 Student profile page</p>
     </footer>
 </body>
 </html>

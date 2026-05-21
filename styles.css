@@ -1,0 +1,129 @@
+body{
+    background-color: #f4f4f4;
+    font-family: 'poppins', sans-serif;
+    color:#333;
+    margin: 0;
+    padding: 0;
+}
+main{
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+p{
+    max-width: 700px;
+    line-height: 1.6;
+}
+.navbar{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: skyblue;
+    padding: 15px 30px;
+}
+.navbar{
+    position:sticky;
+    top:0;
+    z-index: 100;
+}
+.nav-links{
+    display:flex;
+    gap:20px;
+}
+.nav-links a{
+    text-decoration: none;
+    color: black;
+}
+img{
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 4px solid #4facfe;
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+th{
+    background-color: #4facfe;
+    color:white
+}
+th,td{
+    border:1px solid#ccc;
+    padding: 12px;
+    text-align: center;
+}
+section{
+    background:white;
+    padding:20px;
+    margin: 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+.skills-grid{
+    display:grid;
+    grid-template-columns: 
+    repeat(3,1fr);
+    gap:20px;
+}
+.skill-card{
+    background-color: white;
+    padding:20px;
+    border-radius:10px;
+    transition: transform 0.3s,box-shadow 0.3s;
+}
+.skill-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 4px 12px rgba(0,0,0,0.2);
+
+}
+.nav-links a{
+    transition:color 0.3s;
+}
+.nav-links a:hover{
+    color:blue;
+}
+button{
+    background-color: #4facfe;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition:background-color 0.3s;
+}
+button:hover{
+    background-color: blue;
+    color:white;
+}
+input,textarea{
+    width: 100%;
+    padding: 10px;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+footer{
+    text-align: center;
+    padding: 15px;
+    background-color: #222;
+    color: white;
+    margin-top: 30px;
+}
+@media(max-width:600px){
+    .skills-grid{
+        grid-template-columns: 1fr;
+    }
+    .navbar{
+        flex-direction: column;
+    }
+    .nav-links{
+        flex-direction: column;
+        margin-top: 10px;
+    }
+}
+    
