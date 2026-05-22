@@ -11,3 +11,7 @@
 5. git commit — Saves changes with a message
 
 6. git push — Uploads code to GitHub
+
+7. git branch-Creates new branch
+
+8. git checkout-Switches branches
