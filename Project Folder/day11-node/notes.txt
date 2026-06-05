@@ -1,0 +1,5 @@
+Node.js is a JavaScript runtime.
+It runs outside the browser.
+Node.js is used for backend development.
+Core modules are very useful.
+I am learning Node.js.
