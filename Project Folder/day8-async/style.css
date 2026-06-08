@@ -1,0 +1,48 @@
+body{
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+.container{
+    max-width: 700px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+h1{
+    text-align: center;
+}
+
+input{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+button{
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+#loading{
+    font-weight: bold;
+}
+
+#errorBox{
+    background-color: red;
+    color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: none;
+}
+
+li{
+    background: #e9ecef;
+    margin: 8px 0;
+    padding: 10px;
+    border-radius: 5px;
+}

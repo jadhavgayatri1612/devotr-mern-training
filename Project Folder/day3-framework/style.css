@@ -1,0 +1,46 @@
+body{
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+.hero-section{
+    background-color:#e9f2ff;
+    padding: 100px 20px;
+}
+.card{
+    border: none;
+    border-radius: 15px;
+    transition: 0.3s;
+    background-color: #e9f2ff;
+}
+
+.card:hover{
+    transform: translateY(-5px);
+}
+
+.emoji{
+    font-size: 50px;
+}
+.footer{
+    background-color:#e9f2ff;
+    margin-top: 50px;
+    border-top: 1px solid #ddd;
+}
+.social-icons a{
+    color: rgb(86, 46, 46);
+    font-size: 28px;
+    margin:0 12px;
+    transition: 0.3s;
+}
+.social-icons a:hover{
+    color:#60a5fa;
+}
+.social-links a{
+    text-decoration: none;
+    margin: 0 10px;
+    color: #333;
+    font-weight: 500;
+}
+
+.social-links a:hover{
+    color: #0d6efd;
+}
