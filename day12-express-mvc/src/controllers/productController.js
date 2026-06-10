@@ -1,18 +1,46 @@
-const products = require("../models/productModel");
+const Product = require("../models/productModel");
 
-const getProducts = (req, res, next) => {
+const getProducts = async (req, res, next) => {
   try {
-    
+    const products = await Product.find();
     res.json(products);
   } catch (err) {
     next(err);
   }
 };
 
-const getProductById = (req, res, next) => {
+const getProductById = async (req, res, next) => {
   try {
-    const product = products.find(
-      p => p.id === Number(req.params.id)
+    const product = await Product.findById(req.params.id);
+
+    if (!product) {
+      return res.status(404).json({
+        message: "Product not found"
+      });
+    }
+
+    res.json(product);
+  } catch (err) {
+    next(err);
+  }
+};
+
+const createProduct = async (req, res, next) => {
+  try {
+    const product = await Product.create(req.body);
+
+    res.status(201).json(product);
+  } catch (err) {
+    next(err);
+  }
+};
+
+const updateProduct = async (req, res, next) => {
+  try {
+    const product = await Product.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
     );
 
     if (!product) {
@@ -27,56 +55,15 @@ const getProductById = (req, res, next) => {
   }
 };
 
-const createProduct = (req, res, next) => {
+const deleteProduct = async (req, res, next) => {
   try {
-    const newProduct = {
-      id: products.length + 1,
-      name: req.body.name,
-      price: req.body.price
-    };
-
-    products.push(newProduct);
-
-    res.status(201).json(newProduct);
-  } catch (err) {
-    next(err);
-  }
-};
-
-const updateProduct = (req, res, next) => {
-  try {
-    const product = products.find(
-      p => p.id === Number(req.params.id)
-    );
+    const product = await Product.findByIdAndDelete(req.params.id);
 
     if (!product) {
       return res.status(404).json({
         message: "Product not found"
       });
     }
-
-    product.name = req.body.name;
-    product.price = req.body.price;
-
-    res.json(product);
-  } catch (err) {
-    next(err);
-  }
-};
-
-const deleteProduct = (req, res, next) => {
-  try {
-    const index = products.findIndex(
-      p => p.id === Number(req.params.id)
-    );
-
-    if (index === -1) {
-      return res.status(404).json({
-        message: "Product not found"
-      });
-    }
-
-    products.splice(index, 1);
 
     res.json({
       message: "Product deleted"

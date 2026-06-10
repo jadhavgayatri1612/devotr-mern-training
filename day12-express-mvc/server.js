@@ -1,4 +1,6 @@
+require("dotenv").config();
 const express = require("express");
+const mongoose = require("mongoose");
 
 const app = express();
 
@@ -46,7 +48,13 @@ app.use((err, req, res, next) => {
     status: 500
   });
 });
-
-app.listen(5000, () => {
-  console.log("Server running on port 5000");
+mongoose.connect(process.env.MONGO_URI)
+.then(() => {
+  console.log("MongoDB connected");
+})
+.catch((err) => {
+  console.log("MongoDB Error:", err);
+});
+app.listen(5001, () => {
+  console.log("Server running on port 5001");
 });
