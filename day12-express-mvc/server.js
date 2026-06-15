@@ -49,12 +49,13 @@ app.use((err, req, res, next) => {
   });
 });
 mongoose.connect(process.env.MONGO_URI)
-.then(() => {
-  console.log("MongoDB connected");
-})
-.catch((err) => {
-  console.log("MongoDB Error:", err);
-});
-app.listen(5001, () => {
-  console.log("Server running on port 5001");
-});
+  .then(() => {
+    console.log("MongoDB connected");
+
+    app.listen(5001, () => {
+      console.log("Server running on port 5001");
+    });
+  })
+  .catch((err) => {
+    console.log("MongoDB Error:", err);
+  });
