@@ -1,10 +1,12 @@
 require("dotenv").config();
+
 const express = require("express");
 const mongoose = require("mongoose");
 
 const app = express();
 
 const productRoutes = require("./src/routes/productRoutes");
+const authRoutes = require("./src/routes/authRoutes");
 
 app.use(express.json());
 
@@ -30,8 +32,9 @@ app.use((req, res, next) => {
   next();
 });
 
-// Routes
+
 app.use("/api/products", productRoutes);
+app.use("/api/auth", authRoutes);
 
 // Middleware 3 - 404 Handler
 app.use((req, res) => {
@@ -48,6 +51,9 @@ app.use((err, req, res, next) => {
     status: 500
   });
 });
+console.log("DAY16 SERVER RUNNING");
+
+// MongoDB Connection
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log("MongoDB connected");
