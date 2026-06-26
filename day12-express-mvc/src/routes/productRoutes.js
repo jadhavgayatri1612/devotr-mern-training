@@ -11,19 +11,24 @@ const {
 } = require("../controllers/productController");
 
 const { verifyToken } = require("../middleware/authMiddleware");
+const requireAdmin = require("../middleware/adminMiddleware");
 
-//  Public Routes 
+// Public Routes
 router.get("/", getProducts);
 router.get("/:id", getProductById);
 
+// Create Product
+router.post("/", verifyToken, createProduct);
 
-// Create product(Post)
-router.post("/",verifyToken, createProduct);
-
-// Update (Put)
+// Update Product
 router.put("/:id", verifyToken, updateProduct);
 
-// Delete product
-router.delete("/:id", verifyToken, deleteProduct);
+// Delete Product (Admin Only)
+router.delete(
+  "/:id",
+  verifyToken,
+  requireAdmin,
+  deleteProduct
+);
 
 module.exports = router;
