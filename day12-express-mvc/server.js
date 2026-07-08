@@ -5,7 +5,8 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
-
+const morgan = require("morgan");
+const logger = require("./src/utils/logger");
 const app = express();
 
 const productRoutes = require("./src/routes/productRoutes");
@@ -42,7 +43,8 @@ app.use(limiter);
 
 // Helmet
 app.use(helmet());
-
+//Morgon logger
+app.use(morgan("dev"));
 // Test Route
 app.get("/test", (req, res) => {
   res.json({
@@ -88,24 +90,35 @@ app.use((req, res) => {
 
 // Global Error Handler
 app.use((err, req, res, next) => {
-  res.status(500).json({
-    error: err.message,
-    status: 500,
+  logger.error(err.message);
+  const statusCode = err.statusCode || 500;
+
+  res.status(statusCode).json({
+    success: false,
+    message: err.message || "Internal Server Error",
+    statusCode,
   });
 });
 
 console.log("DAY17 SERVER RUNNING");
 
 // MongoDB Connection
-mongoose
+   mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
-    console.log("MongoDB connected");
+    logger.info("MongoDB connected");
 
     app.listen(5001, () => {
-      console.log("Server running on port 5001");
+      logger.info("Server running on port 5001");
     });
   })
   .catch((err) => {
-    console.log("MongoDB Error:", err);
+    logger.error("MongoDB Error:" + err.message);
   });
+  process.on("unhandledRejection", (err) => {
+  logger.error("Unhandled Rejection: " + err.message);
+
+  console.log("Shutting down server...");
+
+  process.exit(1);
+});

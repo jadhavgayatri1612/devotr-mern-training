@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 // Signup
-const signup = async (req, res) => {
+const signup = async (req, res, next) => {
   try {
     const { name, email, password } = req.body;
 
@@ -11,7 +11,7 @@ const signup = async (req, res) => {
 
     if (existingUser) {
       return res.status(400).json({
-        message: "Email already registered"
+        message: "Email already registered",
       });
     }
 
@@ -20,7 +20,7 @@ const signup = async (req, res) => {
     const user = await User.create({
       name,
       email,
-      password: hashedPassword
+      password: hashedPassword,
     });
 
     const token = jwt.sign(
@@ -32,18 +32,15 @@ const signup = async (req, res) => {
     res.status(201).json({
       message: "User registered successfully",
       token,
-      user
+      user,
     });
-
-  } catch (error) {
-    res.status(500).json({
-      message: error.message
-    });
+  } catch (err) {
+    next(err);
   }
 };
 
 // Login
-const login = async (req, res) => {
+const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
 
@@ -51,18 +48,15 @@ const login = async (req, res) => {
 
     if (!user) {
       return res.status(401).json({
-        message: "Invalid credentials"
+        message: "Invalid credentials",
       });
     }
 
-    const isMatch = await bcrypt.compare(
-      password,
-      user.password
-    );
+    const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
       return res.status(401).json({
-        message: "Invalid credentials"
+        message: "Invalid credentials",
       });
     }
 
@@ -75,31 +69,26 @@ const login = async (req, res) => {
     res.status(200).json({
       message: "Login successful",
       token,
-      user
+      user,
     });
-
-  } catch (error) {
-    res.status(500).json({
-      message: error.message
-    });
+  } catch (err) {
+    next(err);
   }
 };
 
 // Get All Users (Admin Only)
-const getAllUsers = async (req, res) => {
+const getAllUsers = async (req, res, next) => {
   try {
     const users = await User.find().select("-password");
 
     res.status(200).json(users);
-  } catch (error) {
-    res.status(500).json({
-      message: error.message
-    });
+  } catch (err) {
+    next(err);
   }
 };
 
 module.exports = {
   signup,
   login,
-  getAllUsers
+  getAllUsers,
 };

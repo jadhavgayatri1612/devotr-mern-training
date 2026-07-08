@@ -1,33 +1,29 @@
 const Product = require("../models/productModel");
+const AppError = require("../utils/AppError");
 
-
+// Get All Products
 const getProducts = async (req, res, next) => {
   try {
+  
     const filter = {};
 
-    // Category Filter
     if (req.query.category) {
       filter.category = req.query.category;
     }
 
-    // InStock Filter
     if (req.query.inStock) {
       filter.inStock = req.query.inStock === "true";
     }
 
-    // Sorting
     const sortField = req.query.sort || "createdAt";
     const sortOrder = req.query.order === "desc" ? -1 : 1;
 
-    // Pagination
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 3;
     const skip = (page - 1) * limit;
 
-    // Total Records
     const total = await Product.countDocuments(filter);
 
-    // Fetch Products
     const products = await Product.find(filter)
       .sort({ [sortField]: sortOrder })
       .skip(skip)
@@ -38,22 +34,20 @@ const getProducts = async (req, res, next) => {
       total,
       page,
       limit,
-      totalPages: Math.ceil(total / limit)
+      totalPages: Math.ceil(total / limit),
     });
   } catch (err) {
     next(err);
   }
 };
 
-// Get product by id
+// Get Product By ID
 const getProductById = async (req, res, next) => {
   try {
     const product = await Product.findById(req.params.id);
 
     if (!product) {
-      return res.status(404).json({
-        message: "Product not found"
-      });
+      throw new AppError("Product not found", 404);
     }
 
     res.status(200).json(product);
@@ -62,7 +56,7 @@ const getProductById = async (req, res, next) => {
   }
 };
 
-// Create product
+// Create Product
 const createProduct = async (req, res, next) => {
   try {
     const product = await Product.create(req.body);
@@ -73,7 +67,7 @@ const createProduct = async (req, res, next) => {
   }
 };
 
-// Update product
+// Update Product
 const updateProduct = async (req, res, next) => {
   try {
     const product = await Product.findByIdAndUpdate(
@@ -83,9 +77,7 @@ const updateProduct = async (req, res, next) => {
     );
 
     if (!product) {
-      return res.status(404).json({
-        message: "Product not found"
-      });
+      throw new AppError("Product not found", 404);
     }
 
     res.status(200).json(product);
@@ -94,19 +86,17 @@ const updateProduct = async (req, res, next) => {
   }
 };
 
-// Delete product
+// Delete Product
 const deleteProduct = async (req, res, next) => {
   try {
     const product = await Product.findByIdAndDelete(req.params.id);
 
     if (!product) {
-      return res.status(404).json({
-        message: "Product not found"
-      });
+      throw new AppError("Product not found", 404);
     }
 
     res.status(200).json({
-      message: "Product deleted successfully"
+      message: "Product deleted successfully",
     });
   } catch (err) {
     next(err);
@@ -118,5 +108,5 @@ module.exports = {
   getProductById,
   createProduct,
   updateProduct,
-  deleteProduct
+  deleteProduct,
 };
