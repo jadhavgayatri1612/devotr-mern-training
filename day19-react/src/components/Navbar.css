@@ -1,0 +1,20 @@
+nav {
+  background: #4e33a5;
+  padding: 18px 40px;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #fde68a;
+}

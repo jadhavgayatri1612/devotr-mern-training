@@ -1,0 +1,160 @@
+/* Google Font */ 
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Body */
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  color: #333;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Navbar */
+nav {
+  width: 100%;
+  background: linear-gradient(90deg, #6d4796, #8e2de2);
+  padding: 18px;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #ffe082;
+  transform: translateY(-2px);
+}
+
+/* Main Container */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  padding: 35px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* Home Page */
+.home {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.home h1 {
+  font-size: 48px;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.home p {
+  font-size: 20px;
+  color: #f3f3f3;
+}
+
+/* Heading */
+h1 {
+  text-align: center;
+  color: white;
+  margin-bottom: 35px;
+  font-size: 42px;
+}
+
+/* Product Grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+/* Product Card */
+.card {
+  background: linear-gradient(135deg, #7325f1, #b245ff);
+  color: white;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 12px 30px rgba(252, 251, 251, 0.35);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+
+.card h2,
+.card h3 {
+  color: white;
+}
+
+.card p {
+  color: #f5f5f5;
+}
+
+/* Button */
+.details-btn,
+.view-btn,
+.btn {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 12px 22px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.details-btn:hover,
+.view-btn:hover,
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(37,117,252,0.4);
+}
+
+/* Product Details */
+.product-details {
+  max-width: 650px;
+  margin: 40px auto;
+}
+
+.product-details h1 {
+  color: #252079;
+  margin-bottom: 20px;
+}
+
+.product-details p {
+  color: #070707;
+  font-size: 18px;
+  margin: 12px 0;
+}
+
+/* Loading & Error */
+.loading,
+.error {
+  text-align: center;
+  color: white;
+  font-size: 26px;
+  margin-top: 80px;
+}
