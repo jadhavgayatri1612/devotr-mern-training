@@ -158,3 +158,61 @@ h1 {
   font-size: 26px;
   margin-top: 80px;
 }
+/* Login & Signup Card */
+
+.login-container,
+.signup-container {
+  width: 400px;
+  max-width: 90%;
+  margin: 80px auto;
+  padding: 35px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.login-container h2,
+.signup-container h2 {
+  color: white;
+  margin-bottom: 25px;
+  font-size: 32px;
+}
+
+.login-container input,
+.signup-container input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 18px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.login-container button,
+.signup-container button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  color: white;
+  transition: 0.3s;
+}
+
+.login-container button:hover,
+.signup-container button:hover {
+  transform: translateY(-2px);
+}
+
+.login-container p,
+.signup-container p {
+  color: #ffcccc;
+  margin-bottom: 15px;
+}

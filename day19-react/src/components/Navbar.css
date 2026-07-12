@@ -18,3 +18,52 @@ nav a {
 nav a:hover {
   color: #fde68a;
 }
+.logout-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+
+.logout-btn:hover {
+  color: #ffd700;
+}
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 35px;
+  padding: 20px;
+  background: linear-gradient(135deg, #6d28d9, #4338ca);
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #ffd700;
+}
+
+.logout-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: 0.3s;
+}
+
+.logout-btn:hover {
+  color: #ffd700;
+}
