@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import api from "../api/axios";
 function LoginPage() {
   const [email, setEmail] = useState("");
@@ -19,22 +19,22 @@ function LoginPage() {
 
     setLoading(true);
 
-try {
-  const response = await api.post("/api/auth/login", {
-    email,
-    password,
-  });
+    try {
+      const response = await api.post("/api/auth/login", {
+        email,
+        password,
+      });
 
-  localStorage.setItem("token", response.data.token);
+      localStorage.setItem("token", response.data.token);
 
-  alert("Login Successful");
+      alert("Login Successful");
 
-  navigate("/products");
-} catch (err) {
-  setError(err.response?.data?.message || "Login Failed");
-} finally {
-  setLoading(false);
-}
+      navigate("/products");
+    } catch (err) {
+      setError(err.response?.data?.message || "Login Failed");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -49,7 +49,8 @@ try {
           onChange={(e) => setEmail(e.target.value)}
         />
 
-        <br /><br />
+        <br />
+        <br />
 
         <input
           type="password"
@@ -58,7 +59,8 @@ try {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <br /><br />
+        <br />
+        <br />
 
         {error && <p>{error}</p>}
 
@@ -66,11 +68,11 @@ try {
           {loading ? "Logging in..." : "Login"}
         </button>
         <p style={{ marginTop: "20px", color: "white" }}>
-  Don't have an account?{" "}
-  <a href="/signup" style={{ color: "#ffd700" }}>
-    Signup
-  </a>
-</p>
+          Don't have an account?{" "}
+          <a href="/signup" style={{ color: "#ffd700" }}>
+            Signup
+          </a>
+        </p>
       </form>
     </div>
   );

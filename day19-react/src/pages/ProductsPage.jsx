@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api/axios";
 import { Link } from "react-router-dom";
 
 function ProductsPage() {
@@ -10,9 +10,7 @@ function ProductsPage() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:5001/api/products"
-        );
+        const response = await api.get("/api/products");
 
         setProducts(response.data.data);
       } catch (err) {
@@ -51,14 +49,10 @@ function ProductsPage() {
             </p>
 
             <p>
-              <strong>In Stock:</strong>{" "}
-              {product.inStock ? "Yes" : "No"}
+              <strong>In Stock:</strong> {product.inStock ? "Yes" : "No"}
             </p>
 
-            <Link
-              className="details-btn"
-              to={`/products/${product._id}`}
-            >
+            <Link className="details-btn" to={`/products/${product._id}`}>
               View Details
             </Link>
           </div>

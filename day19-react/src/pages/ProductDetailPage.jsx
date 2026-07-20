@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import axios from "axios";
+import api from "../api/axios";
 
 function ProductDetailPage() {
   const { id } = useParams();
@@ -12,9 +12,7 @@ function ProductDetailPage() {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:5001/api/products/${id}`
-        );
+        const response = await api.get(`/api/products/${id}`);
 
         setProduct(response.data);
       } catch (err) {
@@ -40,13 +38,16 @@ function ProductDetailPage() {
       <div className="card product-details">
         <h1>{product.name}</h1>
 
-        <p><strong>Price:</strong> ₹{product.price}</p>
-
-        <p><strong>Category:</strong> {product.category}</p>
+        <p>
+          <strong>Price:</strong> ₹{product.price}
+        </p>
 
         <p>
-          <strong>In Stock:</strong>{" "}
-          {product.inStock ? "Yes" : "No"}
+          <strong>Category:</strong> {product.category}
+        </p>
+
+        <p>
+          <strong>In Stock:</strong> {product.inStock ? "Yes" : "No"}
         </p>
 
         <Link to="/products" className="details-btn">

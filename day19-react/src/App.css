@@ -1,6 +1,5 @@
-/* Google Font */ 
+/* Google Font */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
-
 
 * {
   margin: 0;
@@ -53,7 +52,7 @@ nav a:hover {
   backdrop-filter: blur(12px);
   padding: 35px;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 /* Home Page */
@@ -130,7 +129,7 @@ h1 {
 .view-btn:hover,
 .btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(37,117,252,0.4);
+  box-shadow: 0 8px 20px rgba(37, 117, 252, 0.4);
 }
 
 /* Product Details */

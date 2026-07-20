@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import api from "../api/axios";
 function SignupPage() {
   const [name, setName] = useState("");
@@ -9,7 +9,7 @@ function SignupPage() {
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const navigate =useNavigate();
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -27,21 +27,21 @@ function SignupPage() {
 
     setLoading(true);
 
-try {
-  const response = await api.post("/api/auth/signup", {
-    name,
-    email,
-    password,
-  });
+    try {
+      const response = await api.post("/api/auth/signup", {
+        name,
+        email,
+        password,
+      });
 
-  alert(response.data.message || "Signup successful");
+      alert(response.data.message || "Signup successful");
 
-  navigate("/login");
-} catch (err) {
-  setError(err.response?.data?.message || "Signup failed");
-} finally {
-  setLoading(false);
-}
+      navigate("/login");
+    } catch (err) {
+      setError(err.response?.data?.message || "Signup failed");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -49,7 +49,6 @@ try {
       <h2>Signup</h2>
 
       <form onSubmit={handleSubmit}>
-
         <input
           type="text"
           placeholder="Enter Name"
@@ -57,7 +56,8 @@ try {
           onChange={(e) => setName(e.target.value)}
         />
 
-        <br /><br />
+        <br />
+        <br />
 
         <input
           type="email"
@@ -66,7 +66,8 @@ try {
           onChange={(e) => setEmail(e.target.value)}
         />
 
-        <br /><br />
+        <br />
+        <br />
 
         <input
           type="password"
@@ -75,7 +76,8 @@ try {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <br /><br />
+        <br />
+        <br />
 
         <input
           type="password"
@@ -84,7 +86,8 @@ try {
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
 
-        <br /><br />
+        <br />
+        <br />
 
         {error && <p>{error}</p>}
 
@@ -92,11 +95,11 @@ try {
           {loading ? "Signing up..." : "Signup"}
         </button>
         <p style={{ marginTop: "20px", color: "white" }}>
-  Already have an account?{" "}
-  <a href="/login" style={{ color: "#ffd700" }}>
-    Login
-  </a>
-</p>
+          Already have an account?{" "}
+          <a href="/login" style={{ color: "#ffd700" }}>
+            Login
+          </a>
+        </p>
       </form>
     </div>
   );
