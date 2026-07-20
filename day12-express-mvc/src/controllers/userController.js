@@ -13,10 +13,7 @@ const getAllUsers = async (req, res, next) => {
 // GET /api/users/:id
 const getUserById = async (req, res, next) => {
   try {
-    if (
-      req.user.role !== "admin" &&
-      req.user.id !== req.params.id
-    ) {
+    if (req.user.role !== "admin" && req.user.id !== req.params.id) {
       return res.status(403).json({
         message: "Access denied",
       });
@@ -39,20 +36,15 @@ const getUserById = async (req, res, next) => {
 // PUT /api/users/:id
 const updateUser = async (req, res, next) => {
   try {
-    if (
-      req.user.role !== "admin" &&
-      req.user.id !== req.params.id
-    ) {
+    if (req.user.role !== "admin" && req.user.id !== req.params.id) {
       return res.status(403).json({
         message: "Access denied",
       });
     }
 
-    const user = await User.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
-    ).select("-password");
+    const user = await User.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    }).select("-password");
 
     res.json(user);
   } catch (err) {
@@ -81,7 +73,7 @@ const changeUserRole = async (req, res, next) => {
       {
         role: req.body.role,
       },
-      { new: true }
+      { new: true },
     ).select("-password");
 
     res.json(user);

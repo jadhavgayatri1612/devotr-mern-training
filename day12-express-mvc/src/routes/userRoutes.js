@@ -18,18 +18,8 @@ router.get("/:id", verifyToken, getUserById);
 
 router.put("/:id", verifyToken, updateUser);
 
-router.delete(
-  "/:id",
-  verifyToken,
-  requireAdmin,
-  deleteUser
-);
+router.delete("/:id", verifyToken, requireAdmin, deleteUser);
 
-router.patch(
-  "/:id/role",
-  verifyToken,
-  requireAdmin,
-  changeUserRole
-);
+router.patch("/:id/role", verifyToken, requireAdmin, changeUserRole);
 
 module.exports = router;

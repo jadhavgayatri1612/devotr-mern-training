@@ -4,7 +4,6 @@ const AppError = require("../utils/AppError");
 // Get All Products
 const getProducts = async (req, res, next) => {
   try {
-  
     const filter = {};
 
     if (req.query.category) {
@@ -70,11 +69,9 @@ const createProduct = async (req, res, next) => {
 // Update Product
 const updateProduct = async (req, res, next) => {
   try {
-    const product = await Product.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
-    );
+    const product = await Product.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
 
     if (!product) {
       throw new AppError("Product not found", 404);

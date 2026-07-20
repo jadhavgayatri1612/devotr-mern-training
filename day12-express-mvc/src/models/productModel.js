@@ -4,25 +4,25 @@ const productSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    minlength: 2
+    minlength: 2,
   },
   price: {
     type: Number,
     required: true,
-    min: 0
+    min: 0,
   },
   category: {
     type: String,
-    enum: ["electronics", "clothing", "food"]
+    enum: ["electronics", "clothing", "food"],
   },
   inStock: {
     type: Boolean,
-    default: true
+    default: true,
   },
   createdAt: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
 module.exports = mongoose.model("Product", productSchema);

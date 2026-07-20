@@ -7,15 +7,10 @@ const User = require("../models/userModel");
 
 const seedUsers = async () => {
   try {
-    // MongoDB se connect
     await mongoose.connect(process.env.MONGO_URI);
 
-    console.log("MongoDB connected for seeding");
-
-    // Passwords ko hash karna
     const hashedPassword = await bcrypt.hash("Password123", 10);
 
-    // 1 Admin + 3 Regular Users
     const users = [
       {
         name: "Seed Admin",
@@ -43,21 +38,15 @@ const seedUsers = async () => {
       },
     ];
 
-    // Existing users ko duplicate hone se bachana
     for (const userData of users) {
       const existingUser = await User.findOne({
         email: userData.email,
       });
 
-      if (existingUser) {
-        console.log(`${userData.email} already exists`);
-      } else {
+      if (!existingUser) {
         await User.create(userData);
-        console.log(`${userData.email} created successfully`);
       }
     }
-
-    console.log("Seed completed successfully");
 
     await mongoose.connection.close();
     process.exit(0);

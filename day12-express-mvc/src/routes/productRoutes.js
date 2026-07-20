@@ -7,7 +7,7 @@ const {
   getProductById,
   createProduct,
   updateProduct,
-  deleteProduct
+  deleteProduct,
 } = require("../controllers/productController");
 
 const { verifyToken } = require("../middleware/authMiddleware");
@@ -24,11 +24,6 @@ router.post("/", verifyToken, createProduct);
 router.put("/:id", verifyToken, updateProduct);
 
 // Delete Product (Admin Only)
-router.delete(
-  "/:id",
-  verifyToken,
-  requireAdmin,
-  deleteProduct
-);
+router.delete("/:id", verifyToken, requireAdmin, deleteProduct);
 
 module.exports = router;

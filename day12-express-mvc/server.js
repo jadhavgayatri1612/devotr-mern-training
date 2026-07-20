@@ -7,12 +7,13 @@ const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
 const morgan = require("morgan");
 const logger = require("./src/utils/logger");
-const app = express();
+
 const userRoutes = require("./src/routes/userRoutes");
 const productRoutes = require("./src/routes/productRoutes");
 const authRoutes = require("./src/routes/authRoutes");
 
-// Global Rate Limiter 
+const app = express();
+
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100,
@@ -21,7 +22,6 @@ const limiter = rateLimit({
   },
 });
 
-// Auth Rate Limiter 
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 10,
@@ -30,58 +30,44 @@ const authLimiter = rateLimit({
   },
 });
 
-// CORS
 app.use(
   cors({
     origin: "http://localhost:5173",
     credentials: true,
-  })
+  }),
 );
 
-// Global Limiter
 app.use(limiter);
-
-// Helmet
 app.use(helmet());
-//Morgon logger
 app.use(morgan("dev"));
-// Test Route
+app.use(express.json());
+
 app.get("/test", (req, res) => {
   res.json({
     message: "Helmet Test",
   });
 });
 
-app.use(express.json());
-
-// Middleware 1 - Request Logger
 app.use((req, res, next) => {
   const timestamp = new Date().toISOString();
 
   res.on("finish", () => {
-    console.log(
-      `${req.method} ${req.url} ${timestamp} ${res.statusCode}`
-    );
+    logger.info(`${req.method} ${req.url} ${timestamp} ${res.statusCode}`);
   });
 
   next();
 });
 
-// Middleware 2 - Request ID
 app.use((req, res, next) => {
   req.requestId = Date.now() + Math.random();
-
-  console.log("Request ID:", req.requestId);
 
   next();
 });
 
-// Routes
 app.use("/api/products", productRoutes);
 app.use("/api/auth", authLimiter, authRoutes);
-app.use("/api/users",userRoutes);
+app.use("/api/users", userRoutes);
 
-// 404 Handler
 app.use((req, res) => {
   res.status(404).json({
     error: "Route not found",
@@ -89,9 +75,9 @@ app.use((req, res) => {
   });
 });
 
-// Global Error Handler
 app.use((err, req, res, next) => {
   logger.error(err.message);
+
   const statusCode = err.statusCode || 500;
 
   res.status(statusCode).json({
@@ -101,10 +87,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-console.log("DAY17 SERVER RUNNING");
-
-// MongoDB Connection
-   mongoose
+mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
     logger.info("MongoDB connected");
@@ -114,12 +97,13 @@ console.log("DAY17 SERVER RUNNING");
     });
   })
   .catch((err) => {
-    logger.error("MongoDB Error:" + err.message);
+    logger.error(`MongoDB Error: ${err.message}`);
   });
-  process.on("unhandledRejection", (err) => {
-  logger.error("Unhandled Rejection: " + err.message);
 
-  console.log("Shutting down server...");
+process.on("unhandledRejection", (err) => {
+  logger.error(`Unhandled Rejection: ${err.message}`);
+
+  logger.info("Shutting down server...");
 
   process.exit(1);
 });
