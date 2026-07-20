@@ -1,0 +1,8 @@
+workspace:
+  id: c874071b-b9d1-4148-81da-8a82549bd4ff
+
+# Each entry here maps a local resource to one or more corresponding objects in Postman Cloud
+
+cloudResources:
+  collections:
+    ../postman/collections/JSONPlaceholder API Tests: 55410227-4a1b2cde-f8e1-458c-8f97-cc4e7f82dc29

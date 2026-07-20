@@ -1,0 +1,13 @@
+$kind: http-request
+url: http://localhost:5000/api/products/1
+method: PUT
+body:
+  type: json
+  content: "{\r
+
+    \    \"name\":\"Gaming Laptop\",\r
+
+    \    \"price\":70000\r
+
+    }"
+order: 10000

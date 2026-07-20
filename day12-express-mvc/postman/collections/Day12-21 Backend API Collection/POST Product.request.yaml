@@ -1,0 +1,13 @@
+$kind: http-request
+url: http://localhost:5000/api/products
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \    \"name\":\"keyboard\",\r
+
+    \    \"price\":1500\r
+
+    }"
+order: 9000

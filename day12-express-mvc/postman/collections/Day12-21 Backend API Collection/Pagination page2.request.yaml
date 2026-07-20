@@ -1,0 +1,7 @@
+$kind: http-request
+url: http://localhost:5001/api/products?page=2&limit=3
+method: GET
+queryParams:
+  page: "2"
+  limit: "3"
+order: 24000

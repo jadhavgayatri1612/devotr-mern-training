@@ -8,7 +8,7 @@ const rateLimit = require("express-rate-limit");
 const morgan = require("morgan");
 const logger = require("./src/utils/logger");
 const app = express();
-
+const userRoutes = require("./src/routes/userRoutes");
 const productRoutes = require("./src/routes/productRoutes");
 const authRoutes = require("./src/routes/authRoutes");
 
@@ -33,7 +33,7 @@ const authLimiter = rateLimit({
 // CORS
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "http://localhost:5173",
     credentials: true,
   })
 );
@@ -79,6 +79,7 @@ app.use((req, res, next) => {
 // Routes
 app.use("/api/products", productRoutes);
 app.use("/api/auth", authLimiter, authRoutes);
+app.use("/api/users",userRoutes);
 
 // 404 Handler
 app.use((req, res) => {

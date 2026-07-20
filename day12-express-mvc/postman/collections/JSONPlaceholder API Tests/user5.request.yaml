@@ -1,0 +1,9 @@
+$kind: http-request
+name: user5
+url: http://localhost:5001/api/users/6a31145e458cb054ee5a3466
+method: DELETE
+auth:
+  type: bearer
+  credentials:
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhM2U2NmFjODIzNTA1ODhlZTE3YTZkNCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc4NDQ4NjI5MiwiZXhwIjoxNzg1MDkxMDkyfQ.S-QZRGIPXFm8pd1bdM3T5VzRlWe9C4_BbZlWCLmuLSM
+order: 43000

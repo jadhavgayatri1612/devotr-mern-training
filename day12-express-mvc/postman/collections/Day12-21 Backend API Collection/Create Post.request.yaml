@@ -1,0 +1,15 @@
+$kind: http-request
+url: https://jsonplaceholder.typicode.com/posts
+method: GET
+body:
+  type: json
+  content: "{\r
+
+    \    \"title\":\"My Posts\",\r
+
+    \    \"body\":\"Testing Postman\",\r
+
+    \    \"UserId\":1\r
+
+    }"
+order: 3000

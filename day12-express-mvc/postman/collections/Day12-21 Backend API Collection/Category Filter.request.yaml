@@ -1,0 +1,6 @@
+$kind: http-request
+url: http://localhost:5001/api/products?category=electronics
+method: GET
+queryParams:
+  category: electronics
+order: 19000

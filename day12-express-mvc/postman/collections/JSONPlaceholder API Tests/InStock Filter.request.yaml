@@ -1,0 +1,6 @@
+$kind: http-request
+url: http://localhost:5001/api/products?inStock=true
+method: GET
+queryParams:
+  inStock: "true"
+order: 20000

@@ -1,0 +1,7 @@
+$kind: http-request
+url: http://localhost:5001/api/products?sort=price&order=desc
+method: GET
+queryParams:
+  sort: price
+  order: desc
+order: 22000

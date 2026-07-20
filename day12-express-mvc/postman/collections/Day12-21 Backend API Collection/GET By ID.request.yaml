@@ -1,0 +1,4 @@
+$kind: http-request
+url: http://localhost:5001/api/products/6a296aeb79ade7a74623360a
+method: GET
+order: 16000

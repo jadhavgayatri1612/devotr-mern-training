@@ -1,0 +1,10 @@
+$kind: http-request
+url: http://localhost:5001/api/products?category=electronics&sort=price&order=desc&page=1&limit=2
+method: GET
+queryParams:
+  category: electronics
+  sort: price
+  order: desc
+  page: "1"
+  limit: "2"
+order: 25000

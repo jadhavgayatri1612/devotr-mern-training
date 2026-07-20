@@ -1,0 +1,15 @@
+$kind: http-request
+url: http://localhost:5001/api/products
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \    \"name\": \"Pizza\",\r
+
+    \    \"price\": 400,\r
+
+    \    \"category\": \"food\"\r
+
+    }"
+order: 14000

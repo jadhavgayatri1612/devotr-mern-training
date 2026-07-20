@@ -1,0 +1,7 @@
+$kind: http-request
+url: https://www.omdbapi.com/?apikey=637942c&s=avengers
+method: GET
+queryParams:
+  apikey: 637942c
+  s: avengers
+order: 6000
